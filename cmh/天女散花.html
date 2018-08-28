@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天女散花</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: aqua;
+        }
+        #box{
+            position: relative;
+            width: 640px;
+            height: 360px;
+            border: 2px solid #56a;
+            margin: 50px auto 0;
+            background-color: #fff;
+        }
+        #box>div{
+            position: absolute;
+            top: 162px;
+            left: 288px;
+            width: 64px;
+            height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+    </div>
+</body>
+<script src="./js/animation.js"></script>
+<script>
+    var box = document.getElementById('box'),
+        arr = [];//用一个数组来进行标记[每一个div]
+        for(var i = 0; i<100; i++){
+            arr.push(i);
+        }
+        // console.log(arr);
+        for(var i = 0; i<arr.length; i++){
+            var key = Math.floor(Math.random()*100);//[0~100）
+            //变量交换顺序
+            var middle = arr[i];
+            arr[i] = arr[key];
+            arr[key] = middle;
+        }
+        var i = 0;
+        fn();
+        function fn(){
+            var value = arr[i];
+            if(typeof arr[i] !== 'undefined'){
+                //确定每一个小块的位置，每一个小块的宽高都为50
+                var _top = Math.floor(value / 10)*36,//每一个元素的垂直坐标
+                    _left = (value % 10)*64,//每一个元素的水平坐标
+                    str = "<div style='background: url(images/5.png) -"+ _left +"px -"+ _top +"px' ></div>";
+                    box.innerHTML += str;
+            var div = box.getElementsByTagName('div')[i];
+                animation( div, {
+                    data:{
+                        top:_top,
+                        left:_left
+                    }
+                },500,function(){
+                    i++;
+                    requestAnimationFrame(fn);
+                });
+            }
+        }
+</script>
+</html>
