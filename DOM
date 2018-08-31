@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #26a;
+        }
+        #p{
+            color: #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="p">
+            <p>123</p>
+        </div>
+        <div id="p1">456</div>
+        <div id="p2">789</div>
+    </div>
+    <script>
+        /*
+            JS三大组部分
+                1.EcmaScript（语法规则）
+                2.DOM(document Object Model)文档对象模型
+                3.BOM
+            childNodes：
+                获取所有元素节点，包括文本节点【空格符、换行符】、注释节点
+            children:
+                获取第一级的子元素;
+                如果需要调用子元素，需要具体加下标，因为children返回的是一个集合
+            nodeType:
+                元素节点的类型：
+                    1.Element 代表元素
+                    2.Attr 代表属性
+                    3.text【空格符、换行符】
+                    8.Comment 代表注释
+                nodeName:
+                    返回节点名称
+                tagName:
+                    返回标签节点
+                nodeName与tagName的区别：
+                    nodeName
+        */
+        var box = document.getElementById('box'),
+        attr = document.createAttribute('class');
+
+        // console.log(box.childNodes);
+        // console.log(box.children);
+        // box.children[0].onclick = function(){
+        //     alert(1);
+        // }
+        // console.log(box.children[0].nodeType);
+        // console.log(box.childNodes[0].nodeType);
+        // console.log(box.childNodes[1].nodeType);
+
+        //  console.log(box.children[0].nodeName);
+        //  console.log(box.children[0].children.nodeName);
+
+        // console.log(box.childNodes[0].nodeName);
+        // console.log(box.childNodes[1].nodeName);
+        // console.log(box.children[0].children[0].nodeName);
+        // console.log(box.childNodes[0].tagName);
+        // console.log(box.childNodes[1].tagName);
+        // console.log(box.children[0].children[0].tagName);
+
+        // console.log(box.getAttributeNode('id'));
+        // console.log(box.getAttributeNode('class'));
+
+        // console.log(document.createAttribute('class'));
+        // console.log(document.createAttribute('id'));
+        attr.nodeValue = 'aaa';
+        box.setAttributeNode(attr);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #26a;
+        }
+        #p{
+            position: absolute;
+            color: #000;
+            cursor: pointer;
+        }
+        #p3{
+            position: absolute;
+        }
+        </style>
+</head>
+<body>
+    <div id="box">
+        <p>123</p>
+        <p>456</p>
+        <p>789</p>
+        <!-- <div id="p">
+            <p id="p3">123</p>
+        </div>
+        <div id="p1">456</div>
+        <div id="p2">789</div> -->
+    </div>
+    <script>
+        
+        /*
+            firstChild:
+                返回第一个子节点【包含文本节点与注释节点】，低版本IE的情况下返回的是元素节点
+            firstElementChild:
+                返回的是元素节点
+            lastChild与lastElementChild同上!
+
+            parentNode:返回父节点
+            offsetParent:
+        */
+        // console.log(box.firstChild);
+        // console.log(box.firstElementChild);
+        // console.log(box.lastChild);
+        // console.log(box.lastElementChild);
+
+        // console.log(box.parentNode);
+        // console.log(p1.parentNode);
+        // console.log(p3.parentNode);
+        // console.log(p1.offsetParent);
+        // console.log(p3.offsetParent);
+
+        // box.innerHTML = '<div></div>';
+
+        var box = document.getElementById('box');
+        var oDiv = document.createElement('div');
+        var cloneBox = box.cloneNode(true);
+        var Ps = document.getElementsByTagName('p');
+        // console.log(oDiv);
+        // console.log(typeof oDiv);
+        // box.appendChild(oDiv);
+        // oDiv.className = 'box';
+        // oDiv.style.cssText = 'wideh:100px;height:20px;background-color:#a98;'
+        
+        // document.body.appendChild(cloneBox);
+        // box.insertBefore( oDiv , box.children[1]);
+
+        // console.log(Ps);
+        // box.removeChild(Ps[0]);
+        // Ps[1].removeChild(box);
+        box.replaceChild(cloneBox,Ps[0]);
+    </script>
+</body>
+</html>
