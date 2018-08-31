@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #26a;
+        }
+        #p{
+            position: absolute;
+            color: #000;
+            cursor: pointer;
+        }
+        #p3{
+            position: absolute;
+        }
+        </style>
+</head>
+<body>
+    <div id="box">
+        <p>123</p>
+        <p>456</p>
+        <p>789</p>
+        <!-- <div id="p">
+            <p id="p3">123</p>
+        </div>
+        <div id="p1">456</div>
+        <div id="p2">789</div> -->
+    </div>
+    <script>
+        
+        /*
+            firstChild:
+                返回第一个子节点【包含文本节点与注释节点】，低版本IE的情况下返回的是元素节点
+            firstElementChild:
+                返回的是元素节点
+            lastChild与lastElementChild同上!
+
+            parentNode:返回父节点
+            offsetParent:
+        */
+        // console.log(box.firstChild);
+        // console.log(box.firstElementChild);
+        // console.log(box.lastChild);
+        // console.log(box.lastElementChild);
+
+        // console.log(box.parentNode);
+        // console.log(p1.parentNode);
+        // console.log(p3.parentNode);
+        // console.log(p1.offsetParent);
+        // console.log(p3.offsetParent);
+
+        // box.innerHTML = '<div></div>';
+
+        var box = document.getElementById('box');
+        var oDiv = document.createElement('div');
+        var cloneBox = box.cloneNode(true);
+        var Ps = document.getElementsByTagName('p');
+        // console.log(oDiv);
+        // console.log(typeof oDiv);
+        // box.appendChild(oDiv);
+        // oDiv.className = 'box';
+        // oDiv.style.cssText = 'wideh:100px;height:20px;background-color:#a98;'
+        
+        // document.body.appendChild(cloneBox);
+        // box.insertBefore( oDiv , box.children[1]);
+
+        // console.log(Ps);
+        // box.removeChild(Ps[0]);
+        // Ps[1].removeChild(box);
+        box.replaceChild(cloneBox,Ps[0]);
+    </script>
+</body>
+</html>
