@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--  168天02小时00分39秒  -->
+    <div>距离过年还有：<p></p> </div>
+
+    <script>
+    
+        var newYear = new Date( '2019/2/5' ),
+            p = document.getElementsByTagName('p')[0];
+        // console.log( newYear )
+        // console.log( Date.now() )
+        // console.log( newYear - Date.now() )//返回毫秒为距离明年过年要多少毫秒；
+        
+        // 1秒 = 1000毫秒  1分钟 = 60秒  1小时 = 60分钟 1天  = 24 小时
+        function fn(){
+            var date = newYear - Date.now(),//返回毫秒为距离明年过年要多少毫秒;
+                DD = Math.floor(date/1000/60/60/24), //返回天
+                hh = Math.floor(date/1000/60/60)%24,
+                mm = Math.floor(date/1000/60)%60,
+                ss = Math.floor(date/1000)%60;
+            console.log( DD ,hh,mm, ss)
+            var str =  DD +'日'+':'+hh+'时'+mm+'分'+ss+'秒';
+            p.innerHTML = str;
+        }
+        fn()
+        setInterval( fn ,1000 )
+
+    
+    </script>
+
+
+
+</body>
+</html>

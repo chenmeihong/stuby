@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='div' >123</div>
+    <script>
+    
+        /*
+            定时器：
+                setTimeout   只执行一次
+                setInterval  循环定时器
+            回调函数：
+                用来接收函数的参数， 
+                   
+        */
+    function  fn(){
+        console.log( ' 新手上线，王小伙加油了！ ' )
+    }
+
+    // fn();
+        setTimeout( fn , 2000 )//定时器:传入的值，
+        // setInterval( fn ,2000 )
+        console.log( '123' );
+        var div = document.getElementById('div');
+        div.onclick = function(){
+            console.log( 1 );
+        }
+        console.log( '456' );
+
+
+
+    </script>
+
+
+</body>
+</html>

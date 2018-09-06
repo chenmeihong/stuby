@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="box">
+            <p>123</p>
+            <p id='p'>321</p>
+            <p>1234567</p>
+        </div>
+    <script>
+    
+        /*
+            createElement / appendChild  两者结合起来用;
+                添加节点
+            cloneNode  克隆节点
+                true  深度拷贝
+                false 浅拷贝
+            insertBefore   在元素前面添加节点
+                insertBefore ( newele , oldele ) 
+            removeChild   删除子节点
+            replaceChild  
+        */
+        var box = document.getElementById( 'box' );
+        var oDiv = document.createElement( 'div' );
+        var cloneBox = box.cloneNode( true );
+        var Ps = document.getElementsByTagName( 'p' );
+        // console.log( oDiv )
+        // console.log( typeof oDiv )
+        // box.appendChild( oDiv );
+        // oDiv.className = 'box';
+        // oDiv.style.cssText = 'width:200px;height:200px;background-color:#f90;'
+        
+        //document.body.appendChild( cloneBox );
+        //box.insertBefore( cloneBox , box.children[1] ) // newele , oldele
+
+        // console.log( Ps )
+        // box.removeChild( Ps[0] );
+        box.replaceChild( cloneBox , Ps[0] )
+
+    </script>
+
+
+
+</body>
+</html>

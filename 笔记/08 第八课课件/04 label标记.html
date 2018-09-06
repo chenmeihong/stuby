@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            label的做法：
+                标记：如果要在哪一层for循环截止，就在哪一层前面加标记（名字可随便起：王小伙！）
+        */
+        // candy:
+        // for( var i = 0;i<5 ; i++ ){
+        //     console.log( '外层第'+ i +'次' );
+        //     for( var j = 0;j <6;j++ ){
+        //         console.log( '内层第'+ j +'次' );
+        //         for( var k = 0 ;k<3;k++ ){
+        //             if( k===2 ){
+        //                 break  candy;
+        //             }   
+        //             console.log( '最层第'+k+'次' ); 
+        //         }
+        //         break;
+        //     }
+
+        // }
+        
+        candy:
+        for( var i = 0;i<5 ; i++ ){
+            console.log( '外层第'+ i +'次' );
+            for( var j = 0;j <6;j++ ){
+                console.log( '内层第'+ j +'次' );
+                if( j === 2 ){
+                    break candy;
+                }
+            }
+        }
+    
+    </script>
+
+</body>
+</html>

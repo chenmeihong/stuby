@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 300px;
+            height:100px;
+            border:2px solid #f0f;
+        }
+    </style>
+</head>
+<body>
+    <!-- 2018年8月20日星期一:21时30分39秒 -->
+    <div id='box' >
+        现在是北京时间：<p>  </p>
+
+    </div>
+
+    <script>
+    
+        var box = document.getElementById( 'box' ),
+            p  = document.getElementsByTagName('p')[0],
+            arr = ['周日','周一','周二','周三','周四','周五','周六'];
+        // arr[date.getDay()]    
+        
+        function fn(){
+            var date = new Date();
+            var YY = date.getFullYear(); //返回年
+            var MM = date.getMonth() + 1  ;//返回月
+            var Day = date.getDay();//返回星期 【注意 ：每个星期第一天是星期日】
+            var DD = date.getDate();//返回天 
+            var hh = addZero( date.getHours() ); //返回时
+            var mm = addZero( date.getMinutes() );//返回分
+            var ss = addZero( date.getSeconds() );//返回秒
+
+            var str = YY +'年'+ MM +'月'+ DD +'日'+arr[Day]+':'+hh+'时'+mm+'分'+ss+'秒';
+            p.innerHTML = str;
+        }
+        fn()
+        setInterval(fn ,1000);
+
+        function  addZero( n ){
+            return n < 10 ?'0' + n : n;
+        }
+
+    
+    </script>
+
+
+
+</body>
+</html>

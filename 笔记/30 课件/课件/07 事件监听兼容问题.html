@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width:150px;
+            height:150px;
+            background-color:#0f0;
+        }
+        #wrap{
+            width:100px;
+            height:100px;
+            background-color:#90f;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <div id="wrap"></div>
+    </div>
+    <script>
+
+        /*
+            事件代理：
+                
+            清除监听：
+                removeEventListener
+            监听兼容：
+                addEventListener（ type , fn ）
+                attachEvent（ type , fn ）
+                注意：
+                    'on' + type
+                只支持事件冒泡，不支持事件捕获; 
+
+            DOM零级清除方式：
+                ducment.onclick = null;
+
+        */
+        //box.onclick = function(){};
+        function fn( e ){
+            e = e || window.event;
+            console.log( 123 )
+        } 
+        // document.addEventListener( 'click', fn );
+        // document.removeEventListener( 'click' , fn );
+        document.attachEvent( 'onclick', fn );
+        
+        document.onclick = function(){
+            console.log( '123' );
+        }
+        
+        ducment.onclick = null;
+
+    </script>
+
+</body>
+</html>

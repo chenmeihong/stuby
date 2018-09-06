@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            1.json对象的创建方式：
+                var obj = {};//字面量/直接量；
+                var obj1 = new Object();  //构建
+                var obj2 = Object.create( {} );//
+            第一种是用得最频繁；
+
+            delete  删除对象
+            2.json对象序列化与反序列化：
+                JSON.stringify
+                JSON.parse
+        
+        */
+        // var obj = {};//字面量/直接量；   
+        // var obj1 = new Object();  //构建
+        // var obj2 = Object.create( {} );//
+
+        var json1 = {
+            name : 'wangxiaohuo',
+            tall :'22',
+            length :'XX',
+            weight : '151'
+        }
+        var json2 = {
+            'name' : 'wangxiaohuo',
+            'tall' :'22',
+            'length' :'XX',
+            'weight' : '151'
+        }
+        var json3 = {
+            "name" : 'wangxiaohuo',
+            "tall" :'22',
+            "length" :'XX',
+            "weight" : '151'
+        }
+    
+    console.log( json1,json2,json3 )
+
+        var json4 = JSON.stringify( json1 )
+        console.log( json4 )
+        console.log( typeof json4 )
+
+        var json5 = JSON.parse( json4 );
+        console.log( json5 )
+
+        var json6 = json1;
+
+    </script>
+
+
+
+</body>
+</html>

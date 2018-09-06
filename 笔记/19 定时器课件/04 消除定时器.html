@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /* 
+            清除定时器：
+                clearInterval( obj )
+                clearTimeout( obj )
+         */
+        function  fn(){
+            console.log( ' 新手上线，王小伙加油了！ ' )
+        }
+        fn()
+        
+
+        var time = setInterval( fn ,2000 );
+            clearInterval( time );
+            // alert( 1 )
+            time = setInterval( fn ,2000 );
+        document.onclick = function(){
+            clearInterval( time );
+            // alert( 1 )
+        }
+    // fn();
+    
+    
+    </script>
+
+
+
+</body>
+</html>

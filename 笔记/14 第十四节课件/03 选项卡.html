@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;font-family: Microsoft YaHei,serif;}
+	    li{list-style: none;}
+        #box{
+            width:426px;
+            height:104px;
+            margin:50px auto;
+
+        }
+        #tab{
+            width:100px;
+            height:100%;
+            float: left;
+
+        }
+        #tab ul li{
+            width:100px;
+            height:50px;
+            margin-bottom: 1px;
+            background: #000;
+            font-size:18px;
+            text-align: center;
+            line-height:50px;
+            color:#fff;
+        }
+        #tab ul li.on{
+            background: #f60;
+        }
+
+        #content{
+            position: relative;
+            width: 326px;
+            height:203px;
+            float: right;
+
+        }
+        #content .pic{
+            display: none;
+        }
+        #content .pic.on{
+            display: block;
+        }
+        #content .pic ul li{
+            display: none;
+            width:100%;
+            height:203px;
+        }
+        #content .pic ul li.on{
+            display: block;
+        }
+        #content .btn{
+            display: none;
+            position: absolute;
+            bottom:0;
+            right:0;
+            height:35px;
+            width:100%;
+            background: rgba(0,0,0,.5);
+        }
+        #content .btn.on{
+            display: block;
+        }
+        #content .btn ul{
+            float: right;
+        }
+        #content .btn ul li{
+            float: left;
+            width:35px;
+            height:35px;
+            background: #ddd;
+            text-align: center;
+            line-height:35px;
+            margin-left:2px;
+        }
+        #content .btn ul li.on{
+            background: #f60;
+        }
+    
+    </style>
+</head>
+<body>
+    
+        <div id="box">
+                <div id="tab">
+                    <ul>
+                        <li class="on">选项卡一</li>
+                        <li>选项卡二</li>
+                        <li>选项卡三</li>
+                        <li>选项卡四</li>
+                    </ul>
+                </div>
+                <div id="content">
+                    <div class="pic on">
+                        <ul>
+                            <li class="on" style="background: url(images/c1.jpg);"></li>
+                            <li style="background: url(images/c2.jpg);"></li>
+                            <li style="background: url(images/c3.jpg);"></li>
+                            <li style="background: url(images/c4.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn on">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                    </div>
+        
+                    <div class="pic">
+                        <ul>
+                            <li class="on" style="background: url(images/m1.jpg);"></li>
+                            <li style="background: url(images/m2.jpg);"></li>
+                            <li style="background: url(images/m3.jpg);"></li>
+                            <li style="background: url(images/m4.jpg);"></li>
+                            <li style="background: url(images/m5.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                        </ul>
+                    </div>
+        
+                    <div class="pic">
+                        <ul>
+                            <li class="on" style="background: url(images/c1.jpg);"></li>
+                            <li style="background: url(images/c2.jpg);"></li>
+                            <li style="background: url(images/c3.jpg);"></li>
+                            <li style="background: url(images/c4.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                    </div>
+        
+                    <div class="pic">
+                        <ul>
+                            <li class="on" style="background: url(images/s1.jpg);"></li>
+                            <li style="background: url(images/s2.jpg);"></li>
+                            <li style="background: url(images/s3.jpg);"></li>
+                            <li style="background: url(images/s4.jpg);"></li>
+                            <li style="background: url(images/s5.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                var tabLi = document.querySelectorAll( '#tab li' ),//左边的选项卡
+                    pic = document.querySelectorAll( '.pic' ),//右边的四个图片组
+                    btn = document.querySelectorAll('.btn'),//右边的四个按钮组;
+                    index = 0;
+                for( var i = 0;i<btn.length;i++ ){//遍历各组
+                    // console.log( i );
+                    var btnLi = btn[i].querySelectorAll('li'),//获取按钮每个组成员的li
+                        picLi = pic[i].querySelectorAll('li');//获取图片组每个子成员
+                    tabLi[i].i = i;
+                    tabLi[i].onmouseenter = function(){
+                        // console.log( this.i );
+                        //滑入的时候先去除原先的样式
+                        tabLi[index].className = '';  
+                        pic[index].className = 'pic';
+                        btn[index].className = 'btn';
+                        index = this.i; //滑入到对应的样式;
+                        //对应的样式进行添加;
+                        tabLi[index].className = 'on';
+                        pic[index].className = 'pic on';
+                        btn[index].className = 'btn on';
+
+                    }
+                
+                    fn(btnLi,picLi);//执行每个子元素;
+                };
+                /*
+                    四组li
+                        btn[0].querySelectorAll('li');
+                        btn[1].querySelectorAll('li');
+                        btn[2].querySelectorAll('li');
+                        btn[3].querySelectorAll('li');
+                */
+                
+                function fn(btn,pic){
+                    
+                    var index = 0;//把每组的每个子成员进行标记;
+                    //此处遍历是为了把每个组的子成员（比如第一组按钮是4个小按钮）
+                    for( var i = 0;i<btn.length;i++ ){
+                        btnLi[i].i = i;//每个按钮组的每个子成员;
+                        //滑入到对应的LI;
+                        btnLi[i].onmouseenter = function(){
+                            //console.log( i );
+                            //每个子成员去除样式;
+                            pic[index].className = '';
+                            btn[index].className = '';
+                            index = this.i;
+                            //每个子成员添加样式
+                            pic[index].className = 'on';
+                            btn[index].className = 'on';
+                        }
+                    }
+                    
+                }
+            
+            </script>
+
+
+
+</body>
+</html>

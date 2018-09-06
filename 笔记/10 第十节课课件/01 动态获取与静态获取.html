@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        ul li{
+            list-style:none;
+            width:100px;
+            height:30px;
+            border:2px solid #f00;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <ul id='ul'>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <script>
+    
+        /*
+            Byid
+            ByclassName
+            querySelector
+            querySelectorAll
+            TagName
+            Name
+        */
+        // var lis = document.querySelectorAll( 'ul li' ),
+        //     ul = document.getElementById('ul');
+
+        // console.log( lis.length );
+        // ul.innerHTML += '<li></li><li></li>'
+        // //console.log( lis[3].innerHTML = '123'  )
+        // console.log( lis.length );
+
+        var lis = document.getElementsByTagName( 'li' ),
+            ul = document.getElementById('ul');
+
+        console.log( lis.length );
+        ul.innerHTML += '<li></li><li></li>'
+        //console.log( lis[3].innerHTML = '123'  )
+        console.log( lis.length );
+
+        /*
+            静态获取：
+                Byid
+                querySelector
+                querySelectorAll
+            动态获取：
+                TagName
+                Name
+                ByclassName
+        */
+
+
+    </script>
+
+</body>
+</html>

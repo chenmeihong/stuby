@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            width:500px;
+            border:2px solid #0f0;
+        }
+        ul li{
+            list-style:none;
+            line-height:100px;
+            margin-left:50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <ul id="box">
+        <li>泰国时间:<span></span></li>
+        <li>新加坡时间:<span></span></li>
+        <li>东京时间:<span></span></li>
+        <li>土耳其时间:<span></span></li>
+        <li>阿联酋时间:<span></span></li>
+        <li>迈尔密时间:<span></span></li>
+        <li>玻利维亚时间:<span></span></li>
+    </ul>   
+
+    <script>
+    
+        /*
+            泰国:东七区
+            新加坡：东八区
+            东京：东九区；
+            土耳其：东二区
+            阿联酋：东四区
+            迈尔密：西五区
+            玻利维亚：西四区
+        */ 
+        /*
+            //UTC 格林尼治的毫秒值
+                date.getTime(); 距离1970年的毫秒值;
+            //东八区的世界时-480mm  -> 转换为毫秒  1小时 = 60分 ，1分钟 = 1000毫秒;
+                [
+                    7*60*60*1000,
+                    8*60*60*1000,
+                    9*60*60*1000,
+                    2*60*60*1000,
+                    4*60*60*1000,
+                    -5*60*60*1000,
+                    -4*60*60*1000
+                ]
+            //世界时的毫秒值：
+        
+        */
+        var time = document.getElementsByTagName( 'span' ),
+            arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+
+        function fn(){
+            var date = new Date(),
+                UTC = date.getTime() + date.getTimezoneOffset()*60*1000,
+                //数组里面存储的内容为每个时区对应的毫秒值;
+                timeArr = [
+                    timeChange(UTC + 7*60*60*1000),
+                    timeChange(UTC + 8*60*60*1000),
+                    timeChange(UTC + 9*60*60*1000),
+                    timeChange(UTC + 2*60*60*1000),
+                    timeChange( UTC + 4*60*60*1000),
+                    timeChange(UTC -5*60*60*1000),
+                    timeChange(UTC -4*60*60*1000)
+                ];   
+                // console.log( timeArr )
+                for( var i = 0; i< time.length ;i++ ){
+                    time[i].innerHTML = timeArr[i]
+                }
+        }
+        fn()
+        setTimeout( fn , 1000 );
+
+        //换算：
+        function timeChange( d ){
+            var date = new Date( d )
+                YY = date.getFullYear(),
+                MM = date.getMonth()+1,
+                WW = date.getDay(),
+                DD = date.getDate(),
+                hh = addZero(date.getHours()),
+                mm = addZero(date.getMinutes()),
+                ss = addZero(date.getSeconds());
+                return YY+'年'+MM+'月'+DD+'日'+arr[WW]+':'+ hh +'时'+mm+'分'+ss+'秒' 
+        }
+
+        function addZero(n){
+            return n < 10 ? '0' + n : '' + n;
+        }
+
+    </script>
+
+
+
+
+
+</body>
+</html>

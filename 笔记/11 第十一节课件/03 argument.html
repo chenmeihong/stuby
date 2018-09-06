@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            arguments:是一个类数组;
+                1.通过下标取值，下标从零开始;
+                2.拥有length属性;
+            return:
+                返回值;把函数里面的内容给返回出来，
+                返回的内容，如果为多个，只返回最后一个值;
+                不能有多个返回值，有多个返回值，只认第一个返回的内容;
+        */
+       
+
+        function fn(){//形参：函数声明，原括号里面的内容;
+  
+        var num = 0;
+            for( var i = 0;i<arguments.length;i++ ){
+                num += arguments[i];
+            }
+            console.log( num )
+            return '帅腐','王多鱼', '瞎猪';
+        }
+        //fn(1);//实参:函数自执行的时候，括号里的内容;
+        // fn(3,2);
+        // fn(2,1,3);
+        var a = fn(2,1,3,4,5,6,7,9,9,9,9,9,9,9,9,999);
+        console.log( a );
+    
+    
+    
+    </script>
+
+
+
+</body>
+</html>

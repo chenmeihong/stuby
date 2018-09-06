@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 100px;
+            height:100px;
+            border:2px solid #00f;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+    <script>
+    
+        /*
+            1.有名函数：通过function来声明的函数变量，这方法叫作函数声明;
+            2.函数表达式：本来是没有名字，必须来通过var来定义的。
+            3.自执行：有名函数通过加括号来执行的;
+            4.他执行：被事件函数所调用;
+        */
+        fn()
+        function fn(){
+             alert( 123 );
+        }
+        fn1();
+        var fn1 = function(){
+            alert( '帅虎今晚很开心！' );
+        }
+        var obox = document.getElementById('box');
+        obox.onclick = function(){
+            alert( '弹一弹！' );
+        }
+        
+    
+    </script>
+
+
+
+</body>
+</html>

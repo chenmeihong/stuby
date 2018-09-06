@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style:none;
+        }
+        #wrap{
+            width:250px;
+            height:auto;
+            margin:50px auto 0;
+            /* border:2px solid #f90; */
+        }
+        p{
+            width: 100%;
+            background-color:deeppink;
+            height:50px;
+            line-height:50px;
+            text-align:center;
+            margin-bottom:1px;
+            cursor:pointer;
+        }
+        ul{
+            display: none;
+        }
+        ul li{
+            height:30px;
+            line-height:30px;
+            text-align:center;
+            background-color:#f9d;
+            margin-top:2px;
+            cursor:pointer;
+        }
+        ul li:hover{
+            background-color:darkorchid;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="wrap">
+        <div>
+            <p>VIP</p>
+            <ul  class='list'>
+                <li>问题不大</li>
+                <li>僵小鱼</li>
+                <li>喵锅</li>
+                <li>后知后觉</li>
+                <li>urm</li>
+            </ul>
+        </div>
+        <div>
+            <p>地区</p>
+                <ul  class='list'>
+                    <li>重庆</li>
+                    <li>四川</li>
+                    <li>湖北</li>
+                    <li>安徽</li>
+                    <li>浙江</li>
+                </ul>
+            </div>
+            <div>
+            <p>爱好</p>
+            <ul class='list'>
+                <li>女装</li>
+                <li>娃娃</li>
+                <li>男</li>
+                <li>LOL</li>
+                <li>富萝莉</li>
+            </ul>
+            </div>
+    </div>
+
+    <script>
+    
+        //1.for循环来遍历每个p标签，进行绑定点击事件;
+        var title = document.getElementsByTagName( 'p' ),
+            olist = document.getElementsByClassName( 'list' );
+        for( var i = 0,len = title.length;i<len;i++ ){
+            title[i].candy = i;
+            title[i].flag = false;
+            title[i].onclick = function(){
+                //alert( this.candy );
+                if( this.flag ){
+                    alert(1);
+                    this.flag = false;
+                    olist[this.candy].style.display = 'none'
+                }else{
+                    for( var j = 0,len = title.length;j<len;j++ ){
+                        olist[j].style.display = 'none';
+                        title[j].flag = false;
+                    }
+                    alert( 2 );
+                    this.flag = true;
+                    olist[this.candy].style.display = 'block'
+                }
+            }
+        }
+
+
+        //2.做个开关（boolean）
+        //3.
+    
+    
+    </script>
+
+</body>
+</html>

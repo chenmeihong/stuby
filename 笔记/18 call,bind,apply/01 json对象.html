@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            数组：按照一定顺序来进行排序；
+            json对象（）：
+                属性值如果为字符内容，必须要用引号引起来；
+
+        */
+        // var arr = [1,2,3,4,5];
+        // console.log( arr[0] );
+        var json1 = {
+            name :'candy',  // 键值对：   键：属性；  值：属性值
+            age :'18',
+            tall :'180',
+            length: '18',
+            weight : '75kg',
+            style:{
+                color: 'deeppink',
+                backgroundColor: 'pink',
+                width: '500px' 
+            },
+            1:' first '
+        }
+        
+        console.log( json1.name )
+        console.log( json1[0] )
+        console.log( json1[name] )//不能这么去取，因为name被当成变量；
+        console.log( json1['name'] )
+        console.log( json1.length )
+        console.log(json1.style.backgroundColor);
+        console.log( json1[1] )
+    
+    
+    </script>
+
+
+
+</body>
+</html>

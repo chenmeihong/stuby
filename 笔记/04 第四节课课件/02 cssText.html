@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 100px;
+            height:100px;
+            background-color: #90f;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+
+    <script>
+    
+        /*
+            cssText : 用于一次性修改多条属性;
+            注意：如果说改变属性值的时候，写法是要使用烤串的写法;
+                 如果做为属性的时候，写法要使用驼峰命名法;
+        */
+        var oBox = document.getElementById('box');
+        oBox.onclick = function(){
+            //alert( 1 );
+            // oBox.style.width = '200px';
+            // oBox.style.height = '200px';
+            // oBox.style.backgroundColor = 'deeppink';
+            oBox.style.cssText ='width:200px;height:200px;background-color:#666'
+        }
+
+
+    
+    
+    </script>
+
+
+</body>
+</html>

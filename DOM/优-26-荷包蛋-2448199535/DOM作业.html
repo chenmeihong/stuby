@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM作业</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: aqua;
+        }
+        ul{
+            max-width: 450px;
+            min-width: 100px;
+            margin: 50px auto;
+            list-style: none;
+        }
+        li{
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 10px;
+            border: 1px solid #000;
+        }
+        #box{
+            width: 1000px;
+            height: 600px;
+            border: 2px solid #56a;
+            margin: 50px auto 0;
+            background-color: #fff;
+            outline: 1px solid #aaa;
+        }
+        #box>div{
+            width: 50%;
+            height: 100%;
+            color: #000;
+        }
+        .fl{
+            float: left;
+        }
+        #box .left{
+            background-color: rgb(8, 34, 184);
+        }
+        #box .right{
+            
+            background-color: rgb(115, 182, 8);
+        }
+        #box .left > p{
+            margin: 10px;
+            color: #988;
+            font-size: 20px;
+        }
+        #box .left .bourn{
+            color: #000;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #box .left span{
+            margin-left: 10px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="left fl">
+            <p>
+                热门目的地：
+                <span class="bourn">中国</span>
+                <span class="bourn">马来西亚</span>
+                <span class="bourn">美国</span>
+                <span class="bourn">日本</span>
+                <span class="bourn">加拿大</span>
+                <span class="bourn">德国</span>
+            </p>
+            <ul class="clearfix"></ul>
+        </div>
+        <div class="right fl">
+            <ul class="clearfix"></ul>
+        </div>
+    </div>
+</body>
+<script>
+    var bourn = document.getElementsByClassName('bourn'),
+        oLeft = document.getElementsByClassName('left')[0].children[1],
+        oRight = document.getElementsByClassName('right')[0].children[0],
+        cloneLe = oLeft.cloneNode(true),
+        cloneRi = oRight.cloneNode(true);
+        console.log(oLeft);
+    for(var i = 0; i < bourn.length; i++){
+        var mark = true;
+        bourn[i].onclick = function(){
+            var that = this;
+            if(!this.mark){
+                var text = this.innerHTML,
+                    rightLi = document.createElement('li'),
+                    oLi = document.createElement('li'),
+                    span = document.createElement('span');
+                oLi.innerHTML = text;
+                span.innerHTML = "X";
+                rightLi.innerHTML = text;
+                rightLi.appendChild(span);
+                oLeft.appendChild(rightLi);
+                oRight.appendChild(oLi);
+                span.onclick = function() {
+                    oLeft.removeChild(rightLi);
+                    oRight.removeChild(oLi);
+                    that.mark = !that.mark;
+                }
+                this.mark = !this.mark;
+            }else{
+                return
+            }
+        }
+        mark = !mark;
+    }
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            width:400px;
+            height:100px;
+            border:2px solid #f0f;
+            margin:100px auto 0;
+        }
+        ul li{
+            float:left;
+            list-style:none;
+            width:41px;
+            height:61px;
+            border:1px solid #0f0;
+        }
+        .colon{width:17px;background:url( 'images/d.png' );}
+        .num0{background:url( 'images/0.png' );}
+        .num1{background:url( 'images/1.png' );}
+        .num2{background:url( 'images/2.png' );}
+        .num3{background:url( 'images/3.png' );}
+        .num4{background:url( 'images/4.png' );}
+        .num5{background:url( 'images/5.png' );}
+        .num6{background:url( 'images/6.png' );}
+        .num7{background:url( 'images/7.png' );}
+        .num8{background:url( 'images/8.png' );}
+        .num9{background:url( 'images/9.png' );}
+    </style>
+</head>
+<body>
+    
+    <ul>
+        <li class='num0 pic'></li>
+        <li class='num0 pic'></li>
+        <li class='colon'></li>
+        <li class='num0 pic'></li>
+        <li class='num0 pic'></li>
+        <li class='colon'></li>
+        <li class='num0 pic'></li>
+        <li class='num0 pic'></li>
+    </ul>
+
+    <script>
+    
+        var pics = document.getElementsByClassName('pic');
+
+        function fn(){
+            var date = new Date(),
+                str = addZero(date.getHours()) + addZero(date.getMinutes()) + addZero(date.getSeconds());
+            //hh: 
+            console.log( str )
+            for( var i = 0;i< str.length;i++ ){
+                pics[i].className = 'pic num' + str[i];
+            }
+            
+        }
+        setInterval( fn ,1000 );
+        fn()
+
+        function addZero(n){
+            return n < 10 ? '0' + n : '' + n;
+        }
+    
+    </script>
+
+
+</body>
+</html>

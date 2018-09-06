@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 100px;
+            height:100px;
+            background-color: #90f;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+
+    <script>
+    
+        /*
+            cssText : 用于一次性修改多条属性;
+            注意：如果说改变属性值的时候，写法是要使用烤串的写法;
+                 如果做为属性的时候，写法要使用驼峰命名法;
+
+            要访问一个对象里面的属性，除了可以使用点操作，还可以使用【】来代替;
+            点操作与【】的区别：本质上没什么区别;
+            注意：
+                在使用【】代替点操作的时候，中括号时边的属性必须要带上引号，如果说不带上引号的时候，它的值为变量或为数字;         
+        */
+        var oBox = document.getElementById('box'),
+            a = 'style';
+        oBox.onclick = function(){
+            //alert( 1 );
+            oBox.style.width = '200px';
+            oBox.style.height = '200px';
+            oBox.style.backgroundColor = 'deeppink';
+            oBox[a].border = '2px solid #000'
+        }
+        
+
+    
+    
+    </script>
+
+
+</body>
+</html>

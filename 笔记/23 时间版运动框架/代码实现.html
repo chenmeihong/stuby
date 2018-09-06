@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width: 100px;
+			height: 200px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script type="text/javascript">
+
+		var box = document.querySelector('.box'),
+			statu = 100,//宽度初识位置
+			change = 500;//改变的差值
+
+		//动画执行完毕他的宽度是? 300 = 100 + 200
+
+		var time = 1000;
+
+		//开始的时间对象
+		var statuTime = new Date();//记录开始时间
+
+		//匿名函数自执行
+		(function fn(){
+
+			//因为js代码执行非常快,这里的代码是同步代码
+			//取时间比例
+			var now = new Date() - statuTime;//相差的毫秒值 当前代码执行到这里的时间
+
+			now = Math.min(now , time );//谁小取谁
+
+			//console.log(now);//当前时间的差值 ,当前函数执行时与开始时间的时间差
+
+			box.style.width = statu + change * now / time + "px";
+
+			//当时间的差值刚好等于 终止时间时
+			if(now === time){
+
+				//不再去请求动画帧
+				console.log('时间到了');
+			}else{
+
+				requestAnimationFrame(fn);//每次浏览器刷新重绘的时候开始执行 1秒大概会重绘60 理想状态大概就是16毫秒
+			}
+		})();
+
+	</script>
+</body>
+</html>

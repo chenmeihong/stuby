@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            overflow:hidden;
+            height: 61px;
+            margin:100px auto;
+        }
+
+        ul >li{
+
+            list-style: none;
+            float: left;
+            width: 41px;
+            height: 122px;
+            text-align: center;
+            background: pink;
+        }
+
+
+    
+    </style>
+</head>
+<body>
+    
+        <div id="box">
+            <ul>
+                <li class="list">
+                    <img class="time"  src="images/0.png" alt="">
+                    <img class="next" src="images/0.png" alt="">
+                </li>
+                <li class="list">
+                    <img class="time" src="images/0.png" alt="">
+                    <img class="next" src="images/0.png" alt="">
+                </li>
+                <li>
+                    <img src="images/d.png" alt="">
+        
+                </li>
+                <li class="list">
+                    <img class="time" src="images/0.png" alt="">
+                    <img class="next" src="images/0.png" alt="">
+                </li>
+                <li class="list">
+                    <img class="time" src="images/0.png" alt="">
+                    <img class="next" src="images/0.png" alt="">
+                </li>
+                <li>
+                    <img src="images/d.png" alt="">
+                </li>
+                <li class="list">
+                    <img class="time" src="images/0.png" alt="">
+                    <img class="next" src="images/0.png" alt="">
+                </li>
+                <li class="list">
+                    <img class="time" src="images/0.png" alt="">
+                    <img class="next" src="images/0.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <script src='animation.js'></script>
+        <script>
+            var list = document.getElementsByClassName( 'list' ),
+                timeImg = document.getElementsByClassName( 'time' ),
+                nextImg = document.getElementsByClassName('next');
+            for( var i = 0;i< timeImg.length; i++ ){
+                timeImg[i].num = '0';
+            }
+
+            function fn(){
+                var date = new Date(),
+                    hh = addZore(date.getHours()),
+                    mm = addZore(date.getMinutes()),
+                    ss = addZore(date.getSeconds()),
+                    str =  hh + mm + ss ;
+                    
+                console.log( str )
+                for( var i = 0;i< str.length;i++ ){
+                    //str[i] = timeImg[i]
+                    if( timeImg[i].num !== str[i] ){
+                        timeImg[i].num = str[i]//用自定义属性来进行标记;
+                        nextImg[i].src = 'images/'+ str[i] +'.png'
+                        animation( timeImg[i] , {
+                            data:{
+                                'marginTop' : -65
+                            }
+                        },500,function(){
+                            for( var i = 0;i<timeImg.length;i++ ){
+                                timeImg[i].src = 'images/'+ str[i] +'.png';
+                            }
+                            this.style.marginTop = 0;
+                        } );
+                    }
+                }
+                
+            }
+            setInterval( fn , 1000 );//这个设置定时器
+        
+            function addZore( n ){
+                return n < 10  ? '0' + n : '' + n;
+            }
+
+
+        </script>
+
+</body>
+</html>

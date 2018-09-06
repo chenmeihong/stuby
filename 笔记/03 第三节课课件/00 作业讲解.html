@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        div{
+            width:300px;
+            height:150px;
+            background-color: #666;
+            margin:50px auto 0;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div id='box1'> box1 </div>
+    <div id='box2'> box2 </div>
+    
+
+    <script>
+    
+        var box1  = document.getElementById('box1'),
+            box2 = document.getElementById( 'box2' ),
+            colorBefore = '#666',
+            colorAfter = 'pink';
+
+        box1.onmouseenter = function(){
+            //console.log( '我进去了' );
+            box2.style.backgroundColor = colorAfter;
+        }    
+        box1.onmouseleave = function(){
+            //console.log( '我离开了！' );
+            box2.style.backgroundColor = colorBefore;
+        }
+        box2.onmouseenter = function(){
+            //console.log( '我进去了' );
+            box1.style.backgroundColor = colorAfter;
+        }    
+        box2.onmouseleave = function(){
+            //console.log( '我离开了！' );
+            box1.style.backgroundColor = colorBefore;
+        }
+
+    
+    </script>
+
+</body>
+</html>

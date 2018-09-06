@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width:200px;
+            height:200px;
+            background-color: purple;
+        }
+        #wrap{
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id='wrap'></div>
+    </div>
+    <script>
+        
+        /*
+            addEventListener( type , function(){} , boolean );
+            事件冒泡：从下往上冒;
+            事件捕获: 从上往下抓;
+                boolean:
+                    true:事件捕获
+                    false:事件冒泡
+            执行顺序：
+                先进行捕获之后再冒泡
+        */
+        var box = document.getElementById( 'box' );
+
+        //DOM二级的写法
+          
+        document.addEventListener('click',function(){
+            console.log( '文档被点击了' )
+        }); 
+        wrap.addEventListener('click',function(){
+            console.log( 'wrap也被点击了' )
+        },true);
+        box.addEventListener('click',function( e ){
+            console.log( '盒子被点击了' )
+        },true);  
+
+    </script>
+
+</body>
+</html>

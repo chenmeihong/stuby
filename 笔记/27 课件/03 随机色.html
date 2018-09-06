@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+			margin:0;
+			padding:0;
+		}
+
+		#box{
+			overflow: hidden;
+			border: 1px solid;
+		}
+		p{
+			float: left;
+			height: 30px;
+			margin:2px;
+			padding:2px;
+			line-height: 30px;
+
+		}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+    
+        var box = document.getElementById( 'box' );
+        setInterval( function(){
+            var color = random16();
+            box.innerHTML += '<p style=" background-color:'+ color +' ">'+ color +'</p>'
+        }, 1000 )
+        function  rgba(){
+            //[0,256)
+            //rgba(58,158,208,0.6) rgba( 0-255,0-255,0-255,0.0-1.0 )[ 0,1 )
+           return 'rgba('+  Math.floor(Math.random()*256) + ',' + Math.floor(Math.random()*256)+ ','+ Math.floor(Math.random()*256) +','+Math.random().toFixed(1)+')'
+        }
+        function  rgb(){
+            //[0,256)
+            //rgba(58,158,208,0.6) rgba( 0-255,0-255,0-255,0.0-1.0 )[ 0,1 )
+           return 'rgb('+  Math.floor(Math.random()*256) + ',' + Math.floor(Math.random()*256)+ ','+ Math.floor(Math.random()*256) + ')'
+        }
+        function random16(){
+            //#abcdef ; //[0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f]
+            var arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'],
+                jinhao = '#' ;
+            for( var i = 0;i < 6; i++ ){ //0 - 6
+                //[0,16) [0,15]
+                jinhao += arr[Math.floor(Math.random()*16)];//jinhao = jianhao + a b c d e f
+            }
+            return jinhao;
+        }
+    
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box div{
+            float:left;
+            width:50px;
+            height:50px;
+            background-color: deeppink;
+            margin:5px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <button> 小按钮 </button>
+    <div id='box'>
+
+        <!-- <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div> -->
+
+    </div>
+
+    <script>
+    
+        var Btn = document.getElementsByTagName( 'button' )[0];
+        var oBox = document.getElementById( 'box' );
+
+        Btn.onclick = function(){
+            var str = '';
+            for( var i = 0;i<10;i++ ){
+                str += '<div></div>';
+            }
+            //console.log( str );
+            oBox.innerHTML += str;
+        }
+    
+    
+    </script>
+
+
+</body>
+</html>

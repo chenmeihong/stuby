@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            position: relative;
+            /* position:fixed; */
+            float:left;
+            width:200px;
+            height:200px;
+            background-color: #90f
+        }
+        #p{
+            position:absolute;
+        }
+        #p3{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+        
+    <div id="box">
+            <!---->
+            <div id="p">
+                <p id='p3'>123</p>
+            </div>
+            <div id="p1">321</div>
+            <div id="p2">1234567</div>
+    </div>
+    <script>
+            var box = document.getElementById( 'box' );
+        /*
+            firstChild
+                返回第一个子节点[包含文本节点与注释节点]，低版本IE的情况下返回的是元素节点;
+            firstElementChild
+                返回的是元素节点    
+            lastChild与lastElementChild 同上！
+
+            parentNode      返回父节点，
+            offsetParent    返回定位父级，如果父级没有定位则所上级再找,
+                如果都没有定位，则最终返回body;
+            createElement / appendChild
+
+
+        */
+        // console.log( box.firstChild )
+        // console.log( box.firstElementChild )
+        // console.log( box.lastChild )
+        // console.log( box.lastElementChild )
+        
+        // console.log( box.parentNode )
+        // console.log( p1.parentNode )
+        // console.log( p3.offsetParent )
+        //box.innerHTML = '<div>123</div>';
+
+        var oDiv = document.createElement( 'div' );
+        console.log( oDiv )
+        console.log( typeof oDiv )
+
+        // oDiv.onclick = function(){
+        // }
+        
+
+    </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style:none;
+        }
+        img{
+            vertical-align: top;
+        }
+        #wrap{
+            position: relative;
+            width: 640px;
+            height: 360px;
+            margin:50px auto;
+            overflow: hidden;
+            user-select: none;
+        }
+        #wrap .pic{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 1000%;
+        }
+        .pic li{
+            float: left;
+        }
+        .tab{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -100px;
+            width: 150px;
+            height: 30px;
+            padding-left:10px;
+            background: rgba(0,0,0,.2);
+            border-radius: 15px;
+            transition: .5s;
+            transform: scale(.8);
+        }
+        .tab:hover{
+            background: rgba(0,0,0,.5);
+            transform: scale(1.2);
+        }
+        .tab li{
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: #fff;
+            border-radius: 50%;
+            margin: 5px 10px 0 0;
+            opacity: .35;
+            cursor: pointer;
+        }
+        .tab li.on{
+            position: absolute;
+            top: 0px;
+            background: #f60;
+            opacity: 1;
+            z-index: 99;
+        }
+        #wrap>div{
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            width: 30px;
+            height: 60px;
+            background: rgba(0,0,0,.2);
+            text-align: center;
+            font-size: 18px;
+            line-height: 60px;
+            color: #fff;
+            cursor: pointer;
+        }
+        #wrap>div:hover{
+            background: rgba(0,0,0,.5);
+        }
+        .next{
+            right: 0;
+        }
+    
+    
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <ul class="pic">
+            <li><img src="images/1.png"></li>
+            <li><img src="images/2.png"></li>
+            <li><img src="images/3.png"></li>
+            <li><img src="images/4.png"></li>
+            <li><img src="images/5.png"></li>
+            <li><img src="images/1.png"></li>
+        </ul>
+        <ul class="tab">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="prev"><</div>
+        <div class="next">></div>
+    </div>
+    <script src="animation.js"></script>
+    <script>
+    
+        /*
+            1.右按钮
+                1.1 图片切换
+                    index进行标记
+                    运动框架来改变图片的left的值
+                        进行判断处理(是否到达临界值);
+                1.2 选项卡的切换
+                    
+            2.左按钮
+                2.1 图片切换
+                2.2 选项卡的切换
+            3.选项卡
+                3.1 相邻（ 直接切换left ）
+                3.2 不相邻（ 淡入淡出 ）
+        */
+        var next = document.getElementsByClassName('next')[0],
+            prev = document.getElementsByClassName( 'prev' )[0],
+            wrap = document.getElementById('wrap'),
+            picBox = document.getElementsByClassName( 'pic' )[0],
+            picLi = picBox.querySelectorAll('li'),
+            tabLi = wrap.querySelectorAll( '.tab > li' ),
+            tabLiOn = wrap.querySelector( '.tab > li.on' ),
+            index = 0, //下标进行标记
+            date = new Date(); //记得时间，用于判断点击的间隔;
+
+        for( var i = 1; i< tabLi.length;i++ ){
+            // console.log( i )
+            next.onclick = function(){
+                if( new Date() - date > 500 ){
+                    index++;
+                    animation( picBox ,{
+                        data:{
+                            left: -640*index// 1*-640
+                        }
+                    },500 ,function(){
+                        if( index === picLi.length - 1 ){
+                            picBox.style.left = 0;
+                            index = 0;
+                        }
+                    });
+                    if( index === picLi.length - 1 ){
+                        animation( tabLiOn,{
+                            data:{
+                                opacity:0
+                            }
+                        },250,function(){
+                            tabLiOn.style.left = '10px';
+                            animation( tabLiOn,{
+                                data:{
+                                    opacity:1
+                                }
+                            },250 );
+                        });
+                    }else{
+                        animation( tabLiOn ,{
+                            data:{
+                                left: 10 + index*30
+                            }
+                        },500,function(){
+                            
+                        } );
+                    }
+                    
+                }
+                date = new Date();
+            }
+            prev.onclick = function(){
+                if( new Date() - date > 500 ){
+                    if( index=== 0 ){
+                        index = picLi.length - 1;//多了一张图片，为第二组的第一张;
+                        picBox.style.left = -640*(picLi.length - 1) +'px';
+                        animation( tabLiOn,{
+                            data:{
+                                opacity:0
+                            }
+                        },250,function(){
+                            tabLiOn.style.left = (picLi.length- 2)*30 + 10 +'px';
+                            animation( tabLiOn,{
+                                data:{
+                                    opacity:1
+                                }
+                            },250 );
+                        } );
+                    }
+                    index--;
+                    animation( picBox ,{
+                        data:{
+                            left:-640*index
+                        }
+                    },500,function(){
+
+                    } );
+                    if( index !== picLi.length- 2 ){
+                        animation( tabLiOn , {
+                            data:{
+                                    left:30*index + 10
+                                }
+                            },500,function(){
+
+                        } );
+                    }
+                    
+                }
+                date = new Date();
+            }
+            tabLi[i].index =  i - 1 ;
+            tabLi[i].onclick = function(){
+                var that = this; //保存tabLi的指向
+                // console.log( this.index )
+                animation( picBox ,{
+                    data:{
+                        left: -640*this.index
+                    }
+                }, 500 );
+                if( this.index - index === 1 || this.index - index === -1 ){
+                    animation( tabLiOn , {
+                    data:{
+                        left:30*this.index + 10
+                    }
+                } , 500 );
+                }else{
+                    animation( tabLiOn ,{
+                        data:{
+                            opacity:0
+                        }
+                    } , 250,function(){
+                        tabLiOn.style.left = that.index*30+ 10 + 'px';
+                       animation( tabLiOn ,{
+                        data:{
+                            opacity:1
+                        }
+                    } , 250 )
+                    });
+                }
+                index = this.index;
+            }
+        }
+            
+         
+
+    
+    
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 200px;
+            height:200px;
+            background-color: deepskyblue;
+        }
+        #wrap{
+            width: 100px;
+            height:100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <div id="wrap"></div>
+    </div>
+
+    <script>
+        
+        /*
+            何为冒泡事件：
+                事件从子元素往父级元素向上触发事件，
+            处理兼容问题：
+                主流浏览器：e.stopPropagation()    
+                低版本IE浏览器：e.cancelBubble = true;
+                
+        */
+        var box = document.getElementById( 'box' );
+        document.onclick = function(e){
+            e = e || window.event;
+            console.log( '放学别走！' )
+        }
+        box.onclick = function(e){
+            e = e || window.event;
+            //e.stopPropagation();阻止冒泡;
+            e.cancelBubble = true;
+            console.log( '等我下课' )
+        }
+        wrap.onclick = function(){
+            console.log('嘿嘿')
+        }
+
+    </script>
+
+</body>
+</html>

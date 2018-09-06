@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position:absolute;
+            top:50px;
+            width:200px;
+            height:200px;
+            margin:30px;
+            padding:20px;
+            border:20px solid #0ff;
+        }
+        #wrap{
+            width:100px;
+            height:100px;
+            background-color: #90f;
+            margin:50px;
+            border:10px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id='box' >
+        <div id='wrap' ></div>
+    </div>
+
+    <script>
+        
+        /*
+        offsetTop/offsetLeft
+            获取ele到定位父级的top或left的距离
+            如果说父级没有定位：
+                距离：
+                    marginLeft/marginTop + ele.left/ele.Top
+        */
+        // console.log( box.offsetTop )
+        // console.log( wrap.offsetTop )
+        // console.log( wrap.offsetLeft )
+        //获取元素的距离文档顶部的距离
+
+        function getOffset( ele ){
+            var obj = {
+                left:0,
+                top:0
+            }
+            function  getStyle( obj ){
+                return obj.currentStyle || getComputedStyle( obj )
+            }
+            while( ele!== document.body ){
+                obj.left += ele.offsetLeft + parseFloat( getStyle( ele.offsetParent ).borderLeftWidth  );
+                obj.top += ele.offsetTop + parseFloat( getStyle( ele.offsetParent ).borderTopWidth  );
+                //boder-top-width: borderWidthTop 
+                ele = ele.offsetParent;
+            }
+            return obj;
+            console.log( parseFloat( getStyle( ele.offsetParent ).borderTopWidth  ) )
+        }
+         console.log( getOffset( wrap ).left )
+
+    </script>
+
+</body>
+</html>

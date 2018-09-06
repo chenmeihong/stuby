@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width:100px;
+            height:100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        
+        /*
+            addEventListener( type , function(){} , boolean );
+        
+        */
+        var box = document.getElementById( 'box' );
+        //DOM零级写法
+        // box.onclick = function(){
+        //     console.log( '123' )
+        // }
+        // box.onclick = function(){
+        //     console.log( '321' )
+        // }
+        //DOM二级的写法
+        box.addEventListener('click',function( e ){
+            e.stopPropagation();
+            console.log( '盒子被点击了' )
+        });    
+        document.addEventListener('click',function(){
+            console.log( '文档被点击了' )
+        }); 
+
+
+    </script>
+
+</body>
+</html>

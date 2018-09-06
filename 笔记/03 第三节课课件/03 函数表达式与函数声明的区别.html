@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        
+        /*
+            1.先声明
+            2.后执行
+                var fn2;
+                var fn2 = undefined;
+            3.函数声明与函数表达式的区别：
+                函数声明可以提前解析，函数表达式不可以提前解析，要先定义后执行;
+
+        */
+        // fn1();
+        // function  fn1(){
+        //     alert( '雷猴！' );
+        // }
+        /*
+            1.加()的内容，必定为函数！
+        
+        */
+        console.log( fn2 ); 
+        var fn2 = function(){
+            alert( '大家好！' );
+        }
+        console.log( fn2() );
+    
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

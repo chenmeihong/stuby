@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 100px;
+            height:100px;
+            background-color:deeppink;
+        }
+
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+    <script>
+    
+        /*
+             函数的自执行与他执行
+                函数的自执行就是函数名加括号;
+                他执行：必需被其它东西来触发，比如促发事件;
+         */
+    
+        // function fn (){
+        //     alert( '123' );
+        // }
+        // fn()
+        var oBox = document.getElementById( 'box' );
+        
+        oBox.onclick = function(){
+            alert( '你点到我了!' );
+        }
+    
+    </script>
+
+
+</body>
+</html>

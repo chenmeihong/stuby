@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            请求动画帧/清除动画帧：
+                不兼容IE9及其以下;
+            兼容问题：
+                能在这个浏览器支持还要做兼容;
+            之所以需要做兼容，就是浏览器方面出现不行,原先支持的浏览器的不需要去做兼容;
+        */
+        /*
+            
+        
+        */
+        window.requestAnimationFrame = window.requestAnimationFrame || function ( fn ){
+            return setTimeout( fn , 1000/60 );
+        }
+        window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+
+        var num = 0,
+            animation = null;
+        function fn(){
+                console.log( num++ );
+                animation = requestAnimationFrame( fn );
+        }
+        fn();
+    
+        document.onclick = function(){
+            cancelAnimationFrame( animation );
+        }
+        // var candy = '123';
+        // console.log( candy.abc )
+    
+    
+    </script>
+
+
+</body>
+</html>

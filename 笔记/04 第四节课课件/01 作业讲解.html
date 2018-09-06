@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        #wrap{
+            width:500px;
+            height:230px;
+            border:2px solid #ccc;
+            margin:50px auto 0;
+            border-radius: 10px; 
+            padding-top:10px;
+        }
+        #text{
+            width:450px;
+            height:150px;
+            border:1px solid #ccc;
+            margin:auto;
+            border-radius: inherit;
+            outline: none;
+        }
+        #operation{
+            width: 450px;
+            height: 50px;
+            border:1px solid #ccc;
+            margin:auto;
+            padding-top:10px;
+        }
+        #operation div{
+            float:left;
+            overflow:hidden;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+        }
+        #operation button{
+            float:right;
+            width:50px;
+            height:50px;
+        }
+        ul{
+            width:500px;
+            margin:10px auto;
+            border:2px solid #0f0;
+        }
+        ul li{
+            list-style:none;
+            width:500px;
+            height:50px;
+            border-bottom:2px solid #ccc;
+            line-height:50px;
+            text-indent:1em;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+
+        <div id='text' contenteditable="true"></div>
+        <div id="operation">
+            <div><img src="1.jpg" width='50px' height='50px' alt=""></div>
+            <button id='btn'> 提交 </button>
+        </div>
+        
+    </div>
+    <ul id='list'>
+        <!-- <li>1</li>
+        <li>1</li>
+        <li>1</li> -->
+    </ul>
+
+    <!--
+        1.innerHTML 的问题！
+        2.做文本域的时候，使用的文本域内容而不是表单里在文本
+        3.
+
+
+
+    -->
+    <script>
+    
+        var btn = document.getElementById( 'btn' ),
+            text = document.getElementById('text'),
+            list = document.getElementById('list');
+    
+        //
+        btn.onclick = function(){
+            //alert( 123 );
+            //alert( text.innerHTML );
+            var info = text.innerHTML;
+            list.innerHTML += '<li>'+ info +'</li>';
+            text.innerHTML = '';
+        }
+
+    </script>
+
+    
+</body>
+</html>

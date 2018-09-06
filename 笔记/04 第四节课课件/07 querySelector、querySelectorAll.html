@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box">
+        <div class="wrap">123</div>
+    </div>
+    <div class="wrap">123</div>
+    <div class="wrap">123</div>
+
+
+    <script>
+    
+        /*
+            querySelectorAll与querySelector
+                querySelector       只能获取一个;
+                querySelectorAll    获取到的是一个集合;
+                    如果集合只有一个对象，还是必须要加下标。
+        */
+        // var wraps = document.getElementsByClassName('wrap');
+        // console.log( wraps );
+        var wraps = document.querySelector('.wrap');
+        console.log( wraps );
+        console.log( wraps.style.backgroundColor = 'pink' )
+    
+    </script>
+
+
+</body>
+</html>
