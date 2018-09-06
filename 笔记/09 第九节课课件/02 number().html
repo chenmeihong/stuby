@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        /* 
+            Number()  把样式类型转换为数字类型;
+         */
+        // var str = '123';
+        // console.log( typeof str );
+        // console.log( str );
+        // var num = Number( str );
+        // console.log( num );
+        // console.log( typeof num  );
+
+        /*
+            如果为数组的时候，数组里没有内容的话，会返回0
+            如果数组里面有内容的话，内容为字符串的时候，返回对应的数字;
+
+            NaN是一个坏值,类型为number类型;
+        
+        */
+        // var obj = ['ABC'];
+        // var num = Number( obj );
+        // console.log( num );
+
+        /*
+            -号能被解析;
+        */
+        // var num = Number( '123' );
+
+        // var str = 'abc';
+        // var num = Number( str );
+        // console.log( num );
+        // console.log( typeof num );
+        // console.log( typeof typeof num );
+        // console.log( typeof typeof typeof num );
+
+        /*
+            false转为数字类型的时候，返回0;
+            true转为数字类型的时候，返回1;
+
+        */
+        // var bool = false;
+        // var num = Number( bool )
+        // console.log( num );
+        
+        /*
+            null转为数字类型的时候，返回0;
+        */
+        // var nul = null;
+        // var num = Number( nul )
+        // console.log( num );
+
+        //Json象转为数字类型的时候，返回NaN;
+        //如果说你进行了非法的运算，就会返回NaN;
+        // var json = {};
+        // var num = Number( json )
+        // console.log( num );
+
+        var num = 1/'a';
+        console.log( num );
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            parseFloat与parseInt区别：
+                相同点：会进行隐式的类型转换;
+                不同点：
+                    parseInt取整数，把小数点部分砍掉;
+                    parseFloat取一个浮点数（ 能取到第一个小数点部分的内容 ）;
+        */
+        // var str = '1.23.4';
+        // var abc = parseFloat( str );
+        // console.log( abc ); 
+
+        // var obj = [];
+        // var abc = parseFloat( obj );
+        // console.log( obj );
+        // console.log( abc );
+
+        // var obj = {};
+        // var abc = parseFloat( obj );   //NaN
+        // console.log( obj );
+        // console.log( abc );
+
+        var str = '';
+        var abc = parseFloat( str );   //NaN
+        console.log( str );
+        console.log( abc );
+
+    
+    </script>
+
+
+
+</body>
+</html>

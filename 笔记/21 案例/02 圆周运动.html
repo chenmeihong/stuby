@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            position: relative;
+            width:400px;
+            height:400px;
+            border:2px solid #f0f;
+            margin:50px auto 0 ;
+            border-radius:50%;
+        }
+    
+        #ball{
+            position: absolute;
+            top:200px;
+            left:400px;
+            width:10px;
+            height:10px;
+            background-color:black;
+            border-radius:50%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        
+        <div id="ball"></div>
+
+
+    </div>
+
+
+
+    <script>
+        
+        var ball = document.getElementById('ball'),
+            deg = 0,
+            r = 200,
+            x = 200,
+            y = 200;
+        
+        setInterval( function(){
+            //sin( 30 ) 浏览器不认角度，只认弧度;
+            var rad  = Math.PI/180*deg,
+                nx = Math.cos( rad )*r + x ,
+                ny = Math.sin( rad )*r + y ;
+                deg +=1 ;
+
+            ball.style.left = nx - 5 + 'px';
+            ball.style.top = ny - 5  + 'px';    
+            // console.log( nx,ny )
+
+        }, 13 )
+
+
+        
+        
+    </script>
+
+
+</body>
+</html>

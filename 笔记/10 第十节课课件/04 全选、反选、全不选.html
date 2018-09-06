@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        #wrap{
+            width:400px;
+            margin:50px auto 0;
+            user-select: none;
+        }
+        ul li{
+            list-style:None;
+            border:1px dashed #000;
+            padding:20px;
+            cursor:pointer;
+        }
+        ul li span{
+            float:left;
+            width:20px;
+            height:20px;
+            background-image:url( 'images/ck.png' );
+            margin-right:10px;
+            margin-top:2px;
+        }
+        ul li span.active{
+            background-image:url( 'images/cked.jpg' );
+        }
+        button{
+            width: 50px;
+            height:30px;
+        }
+        button.active{
+            background-color: #90f;
+        }
+    
+    </style>
+</head>
+<body>
+        <div id="wrap">
+
+            <ul>
+                <li><span></span>option1</li>
+                <li><span></span>option2</li>
+                <li><span></span>option3</li>
+                <li><span></span>option4</li>
+                <li><span></span>option5</li>
+                <li><span></span>option6</li>
+                <li><span></span>option7</li>
+            </ul>    
+            <div class="box">
+    
+                <button>全选</button>
+                <button class='active'>全不选</button>
+                <button>反选</button>
+        
+        </div>
+
+        <script>
+        
+            var Lis = document.getElementsByTagName( 'li' ),
+                Btns = document.getElementsByTagName( 'button' ),
+                Spans = document.getElementsByTagName( 'span' ),
+                len = Lis.length,
+                count = 0;//计数
+                //1.点击每一个选项（打钩）
+                //console.log( len );
+                for( var i = 0;i<len;i++ ){
+                    Spans[i].candy = i;
+                    Spans[i].kaiguan = false;
+                    Spans[i].onclick = function(){
+                        //count++;
+                       
+                        if( this.kaiguan ){//判断开关是开的还是闭合的;
+                            Spans[this.candy].className = '';
+                            // this.kaiguan = false;
+                            count--;
+                            //console.log( count );
+                        }else{
+                            //加类名，勾上;
+                            Spans[this.candy].className = 'active';
+                            // this.kaiguan = true;
+                            count++;
+                            //console.log( count );
+                        }
+                        this.kaiguan = !this.kaiguan;//每次判断后就反着，开的关，关的开;
+
+                        //是全勾还是只勾上一个还是全没有勾上
+                        // if( count === len ){ //全勾
+                        //     Btns[1].className = '';
+                        //     Btns[0].className = 'active';
+                        // }else if( count === 0 ){//全没有勾上
+                        //     Btns[1].className = 'active';
+                        //     Btns[0].className = '';
+                        // }else{ // 不管你勾几个！！！
+                        //     Btns[1].className = '';
+                        //     Btns[0].className = '';
+                        // }
+                        isCheck();
+                    }
+                }
+                //2.全选
+                Btns[0].onclick = function(){
+                    this.className = 'active';
+                    Btns[1].className = '';
+                    count = len;
+                    for( var i = 0;i<len;i++ ){
+                        if(  Spans[i].className !== 'active' ){//进行判断，如果有加类名，我直接不加;
+                            Spans[i].className = 'active';
+                            Spans[i].kaiguan = true; 
+                        }
+                    }
+                }
+                //3.全不选
+                Btns[1].onclick = function(){
+                    this.className = 'active';
+                    Btns[0].className = '';
+                    count = 0;
+                    for( var i = 0;i<len;i++ ){
+                        //进行判断，如果有加类名，我直接不加;
+                        Spans[i].className = '';
+                        Spans[i].kaiguan = false; 
+                    }
+                }
+                //4.反选
+            
+                Btns[2].onclick = function(){
+                    for( var i = 0;i<len;i++ ){
+                        if( Spans[i].kaiguan ){
+                            Spans[i].className = '';
+                            count--;
+                        }else{
+                            Spans[i].className = 'active';
+                            count++;
+                        }
+                        Spans[i].kaiguan = !Spans[i].kaiguan;
+                    }
+                    isCheck();
+                }
+            function  isCheck(){
+                // if( count === len ){ //全勾
+                //     Btns[1].className = '';
+                //     Btns[0].className = 'active';
+                // }else if( count === 0 ){//全没有勾上
+                //     Btns[1].className = 'active';
+                //     Btns[0].className = '';
+                // }else{ // 不管你勾几个！！！
+                //     Btns[1].className = '';
+                //     Btns[0].className = '';
+                // }
+                switch( count ){
+                    case len:
+                        Btns[1].className = '';
+                        Btns[0].className = 'active';
+                    break;
+                    case 0:
+                        Btns[1].className = 'active';
+                        Btns[0].className = '';
+                    break;
+                    default:
+                        Btns[1].className = '';
+                        Btns[0].className = '';
+                    break;
+                }
+            }
+        </script>
+
+</body>
+</html>

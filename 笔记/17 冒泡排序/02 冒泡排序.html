@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //var a = 10;
+        // var b =  5;
+        // a = [ 5 ,b = 10 ][0]
+
+        var arr = [ 5 , 2 , 0 , 1 ];
+    
+        for( var i = 0 ;i<arr.length - 1; i++ ){//确定趟次
+            for( var j = arr.length-1;j > i ;j-- ){ //确定次数
+
+                // console.log( j )
+                //a - b 
+                if( arr[ j ] > arr[j - 1] ){ //a < b
+                    arr[ j ] = [ arr[j - 1] ,arr[j - 1] = arr[j]  ][0];//进行交换！
+                }
+
+            }
+        }
+        console.log( arr );
+    
+    
+    </script>
+
+
+
+
+
+</body>
+</html>

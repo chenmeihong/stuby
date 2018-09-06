@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width: 100px;
+			height: 300px;
+			opacity: 0.5;
+			background: pink;
+		}
+		.box + .box{
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+
+	<script type="text/javascript" src="tween.js"></script>
+	<script type="text/javascript">
+
+		//console.log(Tween.Linear);
+
+		var box = document.querySelectorAll('.box');
+
+		//调用
+		animetion(box[0],{
+			width : 1000
+		},{
+			time : 600
+		});
+
+		/*animetion(box[1],{
+			width : 500
+		},600);*/
+
+		//时间版运动框架
+		/*
+			ele 改变的节点
+			attr  修改的属性值
+			time 指向时间
+			callback 回调函数 (有什么用)			
+		*/
+		function animetion(ele,attr,action,callback){
+
+			//getComputedStyle 有兼容 ie低版本不能使用
+			var startAttr = window.getComputedStyle ? getComputedStyle(ele) : ele.currentStyle,//返回都是一个json对象
+				start = {},//初识位置
+				change = {},//差值 需要走的路程
+				startTime = new Date();//开始时间
+
+
+
+
+
+
+
+
+			//运动曲线函数
+			var actinoFn = Tween.Linear;
+
+			//是否指定类型
+			if(action.type && Tween[action.type][action.typeAction]){
+
+				actinoFn = Tween[action.type][action.typeAction];
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			//json对象的遍历
+			for(var key in attr){
+
+				//初识值
+				var startVal = changeNum(startAttr[key]),
+					changeVal = changeNum(attr[key]);
+
+				//如果相等就不改变,只把需要改变的添加进来
+				if(changeVal !== startVal){
+
+					start[key] = startVal;//初识值
+					change[key] = changeVal - startVal;//差值
+				}
+			}
+			
+			//动画执行
+			(function fn(){
+
+				//时间差值
+				var now = new Date() - startTime;
+
+				//时间差值是不稳定的,要与目标时间对比
+				now = Math.min(now , action.time);
+
+				//for in 就是json对象的遍历和for组合使用就是循环对象
+				//使用遍历来设置样式
+				for(var key in change){
+
+					// marginLeft =>  margin + Left
+					var emAttr = ['width','height','left','top','bottom','right'],
+						em = "";
+
+					//test是正则的匹配方法如果存在返回true 不存在返回false
+					if(new RegExp(key,'i').test(emAttr+"")){
+
+						em = "px";
+					}
+
+					//匀速
+					//ele.style[key] = start[key] + change[key] * now / time + em;
+
+
+
+					
+					//匀加速
+					ele.style[key] = actinoFn(now,start[key],change[key],action.time) + em;
+
+
+
+				}
+
+				//时间差值等于 目标时间 ,动画结束
+				if(now === action.time){
+
+					//执行回调函数
+					callback && callback.call(ele);
+				}else{
+
+					//下一次浏览器重绘的时候再执行
+					requestAnimationFrame(fn);
+				}
+			})();
+		}
+
+		//转化为数字
+		function changeNum(n){
+
+			return parseFloat(n) || 0;
+		}
+
+	</script>
+</body>
+</html>

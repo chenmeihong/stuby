@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            parseInt : 取整数，把小数点部分砍掉;
+        
+        */
+        // var a = 5.50;
+        // var b = parseInt( a );
+        // console.log( b );
+
+
+        /*
+            经过parseInt的处理，字符串的内容会隐示地转为数字类型;
+        */
+        // var c = parseInt( '9.20' );
+        // console.log( c );
+        // console.log( typeof c )
+
+        /*
+            parseInt 里面如果以字母开头直接返回NaN， 如果是以数字开头的话，读到到非数字结束;，
+        */
+        // var c = parseInt( '-100px' );
+        // console.log( c );
+        // console.log( typeof c )
+        // var c = parseInt( '123abc' );
+        // console.log( c );
+        // console.log( typeof c )
+
+        /*
+            如果为布尔值的话，直接返回NaN;
+        */
+        // var d = parseInt( true );
+        // console.log( d );
+
+        // var d = parseInt( {} );
+        // console.log( d );
+
+    </script>
+
+
+</body>
+</html>

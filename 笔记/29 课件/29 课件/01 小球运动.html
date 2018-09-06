@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        #ball{
+            position: absolute;
+            top:0;
+            left:0;
+            width:200px;
+            height:200px;
+            background-color: deeppink;
+            border-radius:50%;
+            border:1px solid #000;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="ball"></div>
+
+    <script>
+    
+        /*
+            1.处理小球的运动;
+            2.处理反弹方向
+                方向取反！
+                    speedX = - speedX;
+                    speedY = - speedY;
+                限定临界线
+                    minTop = 0
+                    maxTop = document.documentElement.clientHeight(文档窗口的大小)
+                    minLeft = 0
+                    maxLeft = document.documentElement.clientWidth
+            3.改变窗口    
+
+
+        */
+       //clientWidth = padding + contentWidth/contentHeight
+       //offsetWidth  = padding + border +contentWidth /contentHeight
+       console.log( document.documentElement.clientWidth )
+        var ball = document.getElementById( 'ball' ),
+            speedX = 20,
+            speedY = 20,
+            startTop = ball.offsetTop,
+            startLeft = ball.offsetLeft,
+            maxX = document.documentElement.clientWidth - ball.offsetWidth,
+            maxY = document.documentElement.clientHeight - ball.offsetHeight;    
+            console.log(startLeft,startTop)
+        window.onresize = function(){
+            maxX = document.documentElement.clientWidth - ball.offsetWidth,
+            maxY = document.documentElement.clientHeight - ball.offsetHeight;
+        }
+        run();
+        function run(){
+            startTop += speedY; //0 4 8 12
+            startLeft += speedX; //0 4 8 12
+            // console.log( startTop , startLeft )
+
+            if( 0 >= startTop || startTop >= maxY ){
+                speedY = -speedY;
+                startTop = Math.max( 0 , startTop );
+                startTop = Math.min( maxY , startTop );
+            }
+            if( 0 >= startLeft || startLeft >= maxX ){
+                speedX = -speedX;
+                startLeft = Math.max( 0 , startLeft );
+                startLeft = Math.min( maxX , startLeft );
+            }
+            
+
+            ball.style.top = startTop + 'px';
+            ball.style.left = startLeft + 'px';
+            requestAnimationFrame( run );
+        }
+
+    
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            定时器做动画的缺点：
+                有小小的误差;
+            请求动画帧（ requestAnimationFrame ）：
+                原理：
+                    在上一个动画执行完之后开始来进行下一个动画（中间不会产生等待时间）;    
+                样式类型：
+                    API、函数体;
+                用法：
+                    接收一个函数来作为参数来回调函数;
+                优点：
+                    很流畅，不会产生误差;
+                    会贴合浏览器的刷新频率，不会丢帧！
+                同步与异步：
+                    1.定时器，动画帧都是回调函数，都属于异步;
+                    2.事件绑定，
+                    3.AJAX
+
+
+
+        */
+        // var date = new Date();
+        // setInterval(function(){
+        //     console.log( new Date() - date )
+        // },1000)
+        
+            var num = 0;
+            function fn(){
+                console.log( num++ );
+                requestAnimationFrame( fn );
+            }
+            fn();
+
+    
+    </script>
+
+
+
+</body>
+</html>

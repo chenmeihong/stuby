@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width:150px;
+            height:150px;
+            background-color:#0f0;
+        }
+        #wrap{
+            width:100px;
+            height:100px;
+            background-color:#90f;
+        }
+        p{
+            width:50px;
+            height:50px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <div id="wrap"></div>
+        <p></p>
+    </div>
+    <script>
+
+        /*
+            事件代理：
+                
+        
+        
+        */
+        //box.onclick = function(){};
+        document.addEventListener( 'click',function( e ){
+            console.log( e.target )
+            console.log( e.target.tagName );
+            if( e.target.tagName === 'DIV'){
+                console.log( '事件源是div' );
+            }else{
+                console.log( '事件源不是div' )
+                e.target.innerHTML = '123';
+            }
+        } );
+
+
+    </script>
+
+</body>
+</html>

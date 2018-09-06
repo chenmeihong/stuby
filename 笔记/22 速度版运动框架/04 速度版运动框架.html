@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:500px;
+            height:100px;
+            background-color: #f0f;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+    <script>
+        /*
+            速度版运动框架
+                初始值：
+                    width:100px;
+                目标值：
+                    width:500px;    
+                变化量：
+                    每一帧走多少步，步长，
+                        比如每一帧增加5px，直到加到500px;
+            使用到的'器材':
+                对象（要进行改造的内容），
+                对象的属性：width: 
+                对象的属性值：100px;
+                步长：2px;
+        */
+        window.requestAnimationFrame = window.requestAnimationFrame || function ( fn ){
+            return setTimeout( fn , 1000/60 );
+        }
+        window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+
+        var box = document.getElementById( 'box' );
+        //ele对象 , attr 属性, value 属性值 , step 步长;
+        animation( box , 'width' , 100 , 5 );//目标值
+
+        function animation( ele , attr , value , step ){
+            //初始值 -> 目标值;
+            //parseFloat为了进行处理有浮点数的情况，包括进行隐式类型转换;
+            //拿到初始的值;
+            var starAttr = parseFloat( getStyle( ele )[ attr ] ),
+                isDirection = starAttr > value ;
+                value = parseFloat( value );
+                step = parseFloat( step );
+    /*
+        初始值与目标值：
+            初始值大于目标值的情况,再进行判断初始值是否小于等于目标值（ 步长为负 ）
+                如果小于等于目标值，直接等于目标值;
+                如果不小于等于目标值，继续回调函数;
+            初始值小于目标值的情况,再进行判断初始值是否大于等于目标值（ 步长为正 ）
+                如果大于等于目标值，直接等于目标值;
+                如果小于目标值，继续回调函数;
+    */
+            if( isDirection ){
+                step = - step;   
+            }
+            
+            fn()
+            function fn(){
+                //把初始值来进行加步长
+                starAttr += step;//100 +2 +2+2+2+2....= 500
+                if( isDirection ? starAttr <= value : starAttr >= value ){
+                     starAttr = value;       
+                }else{
+                    requestAnimationFrame( fn );
+                }
+                ele.style[attr] = starAttr + 'px';
+            }
+            
+
+        }
+
+        function getStyle( ele ){
+            return ele.currentStyle || getComputedStyle( ele );
+        }
+        
+        
+
+
+    </script>
+
+</body>
+</html>

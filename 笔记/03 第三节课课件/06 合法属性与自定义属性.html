@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        #box{
+            width: 100px;
+            height:100px;
+            border:2px solid #0f0;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="box"> 我是胖腐！ </div>
+    <script>
+    
+        /*
+            合法属性与自定义属性：
+                合法属性：对象本身存在的属性;
+                自定义属性：不是系统制定好的，而是人为自已来定义的属性;
+        */
+        var oBox = document.getElementById( 'box' );
+        // oBox.onclick = function(){
+        //     console.log( oBox.innerHTML )
+        // }
+        oBox.candy = '糖果';
+        alert( oBox.candy );
+
+    
+    
+    </script>
+
+
+</body>
+</html>

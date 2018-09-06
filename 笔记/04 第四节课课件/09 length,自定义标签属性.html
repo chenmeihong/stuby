@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='box' class='wrap' title='大帅迪' pangfu='乐虎'></div>
+
+    <script>
+    
+        /*
+            1.自定义标签属性：
+                人为给设置的。
+            2.操作自定义标签属性：
+                修改：setAttribute( 'Attr','value' )
+                移除：removeAttribute
+                获取：getAttribute
+                判断：hasAttribute
+        */
+        var oBox = document.getElementById('box');
+        //oBox.class = 'btn';
+        oBox.className = 'btn'; //修改类名用className而不是class.
+        oBox.id = 'pangfu';
+        oBox.pangfu = 'lefu'
+        oBox.setAttribute('pangfu','帅迪');
+        oBox.setAttribute('xiaohao','韩永');
+        oBox.removeAttribute('pangfu');
+        oBox.removeAttribute('id');
+        console.log( oBox.getAttribute('title') );
+        console.log( oBox.hasAttribute('title') );//返回 true 或false;
+        //console.log( oBox.length );
+
+
+    
+    </script>
+
+
+</body>
+</html>

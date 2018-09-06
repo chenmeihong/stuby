@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 100px;
+            height:100px;
+            background: #0f0;
+        }
+    
+    </style>
+</head>
+<body>
+    
+
+    <div id="box"> 你进入了嘛？ </div>
+
+
+
+    <script>
+    
+        /*
+            innerHTML 与innerText 都获取标签的内容或操作文本的样式;
+            innerHTML 与innerText的区别：
+                innerHTML :会解析标签代码，
+                innerText :不会解析标签代码;
+            注意：单引号与双引号，如果说不是用行字符串的拼接的话，要区别分开;
+        */
+        var oBox = document.getElementById( 'box' );
+        oBox.onmouseenter = function(){
+            //oBox.innerHTML = ' <a href="jd.com"> 我要进入京东 </a> ';
+            oBox.innerText = '<a href="jd.com"> 我要进入京东 </a>';
+        }
+
+
+    
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        ul{
+            width:650px;
+            /* height:220px; */
+            border:2px solid #ccc;
+        }
+        ul li{
+            list-style:none;
+            width:600px;
+            height:50px;
+            border-bottom:1px solid #ccc;
+            margin-bottom:15px;
+        }
+        ul li:nth-child(1){
+            margin-top:15px;
+        }
+        ul li p{
+            float:left;
+            width:500px;
+            /* background-color: blueviolet; */
+            border-bottom:2px solid #fc0;
+        }
+        ul li input{
+            float:right;
+            margin-top:15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul>
+        <li>
+            <p>内容1</p>
+            <input type="button" value="修改">
+        </li>
+        <li>
+            <p>内容2</p>
+            <input type="button" value="修改">
+        </li>
+        <li>
+            <p>内容3</p>
+            <input type="button" value="修改">
+        </li>
+    </ul>
+
+    <script>
+        
+        var txt = document.getElementsByTagName( 'p' ),
+            btns = document.getElementsByTagName('input');
+    
+        for( var i = 0;i<btns.length;i++ ){
+            btns[i].i = i;
+            btns[i].flag = false;
+            btns[i].onclick =  function(){
+                //alert( this.i );  
+                if( this.flag ){//判断开关为开还是关！
+                    //alert( '开关是开' );
+                    this.value = '修改'
+                    txt[this.i].setAttribute( 'contenteditable' ,false )
+                }else{
+                    //alert( '开关是关' );
+                    this.value = '确定'
+                    txt[this.i].setAttribute( 'contenteditable' ,true )
+                }
+                this.flag = !this.flag;
+            }
+        }
+    
+    </script>
+
+</body>
+</html>

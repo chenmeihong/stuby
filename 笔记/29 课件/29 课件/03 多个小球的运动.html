@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        *{
+            margin:0;
+            padding:0;
+        }
+        .ball{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100px;
+            height:100px;
+            background-color: deeppink;
+            border-radius:50%;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <script>
+        
+        run( 10 ); //实参：个数
+        function run( num ){//num是形参;
+            var speed;
+            for( var i = 0;i< num; i++  ){
+                speed = Math.floor( Math.random()*8 ) + 2;//[2,9]
+                var ball = document.createElement( 'div' );
+                ball.className = 'ball';
+                ball.innerHTML = i;
+                ball.speedX = Math.floor( Math.random()*8 ) + 2;
+                ball.speedY = Math.floor( Math.random()*8 ) + 2;
+                document.body.appendChild( ball ); 
+            }
+            var balls = document.getElementsByClassName( 'ball' ),
+                maxX = document.documentElement.clientWidth - ball.offsetWidth,
+                maxY = document.documentElement.clientHeight - ball.offsetHeight;;
+            window.onresize = function(){
+                maxX = document.documentElement.clientWidth - ball.offsetWidth,
+                maxY = document.documentElement.clientHeight - ball.offsetHeight;
+            }
+            play();
+            function play(){
+                for( var i = 0;i<num;i++ ){
+                    var Balls = balls[i],
+                        startTop = Balls.offsetTop,
+                        startLeft = Balls.offsetLeft,
+                        top = startTop + Balls.speedY,
+                        left = startLeft + Balls.speedX;
+                if( 0 >= top || top >= maxY ){
+                    Balls.speedY = -Balls.speedY;
+                    top = Math.max( 0 , top );
+                    top = Math.min( maxY , top );
+                    Balls.style.background =  rgb();
+                }
+                if( 0 >= left || left >= maxX ){
+                    Balls.speedX = -Balls.speedX;
+                    left = Math.max( 0 , left );
+                    left = Math.min( maxX , left );
+                    Balls.style.background =  rgb();
+                }    
+                        Balls.style.top =   top + 'px';
+                        Balls.style.left =   left + 'px';
+
+                }
+                requestAnimationFrame( play );
+            }
+
+            function  rgb(){
+                //[0,256)
+                //rgba(58,158,208,0.6) rgba( 0-255,0-255,0-255,0.0-1.0 )[ 0,1 )
+                return 'rgb('+  Math.floor(Math.random()*256) + ',' + Math.floor(Math.random()*256)+ ','+ Math.floor(Math.random()*256) + ')'
+            }
+
+        }
+        
+        
+        
+    </script>
+
+
+
+
+</body>
+</html>

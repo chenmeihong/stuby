@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>小按钮1</button>
+    <button>小按钮2</button>
+    <button>小按钮3</button>
+    <button>小按钮4</button>
+    <button>小按钮5</button>
+    <button>小按钮6</button>
+    <button>小按钮7</button>
+    <button>小按钮8</button>
+    <button>小按钮9</button>
+    <button>小按钮0</button>
+
+    <script>
+    
+        /*
+            使用自定义属性来进行记数，
+                胖虎.身高  = ...  ;
+                胖虎.体重  = ...  ;
+                btns[i].cishu = i ;
+                胖虎.胖虎 = ;
+        */
+        var btns = document.getElementsByTagName( 'button' );
+        //alert(1);
+        for( var i = 0 ; i < 10;i++ ){
+            btns[i].i = i;//[0,1,2,3,4,5,6,7,8,9]
+            btns[i].onclick = function(){
+                //console.log( i );//当我点击的时候，早点把你外面的内容执行完了。
+                alert( this.i );
+            }
+            //console.log(i);//
+        }
+        //console.log( i );
+        //console.log( '我开始了嘛！？' );
+
+    
+    </script>
+
+
+</body>
+</html>

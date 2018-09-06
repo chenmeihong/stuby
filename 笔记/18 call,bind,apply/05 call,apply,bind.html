@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /*
+            call/apply/bind   改变this的指向
+                call / apply    自动执行
+                bind           不会自动执行
+            如何传参？？？
+                apply   传参数的时候，必须要用数组保存起来；
+                call / bind 传参数的时候，不需要用数组保存起来，直接传参数
+            共同点：第一个值必须为改变this的对象；    
+
+        */
+        var json1 = {};
+        function fn( a , b ){
+            console.log( this )
+            console.log( a + b )
+        }
+        // fn( 5 , 8 )
+        // document.onclick = fn();
+        // document.onclick = fn.call( json1 );
+        // document.onclick = fn.apply( json1 );
+        // document.onclick = fn.bind( json1 );
+        // document.onclick = fn.bind( null ,5, 8 ); //第一个值为改变this的指向
+        // document.onclick = fn.bind( null ,5, 8 );
+        document.onclick = fn.call( json1 , 6,6 )
+        document.onclick = fn.apply( json1 , [ 12 ,12 ] )
+        
+
+
+
+        
+    
+    
+    </script>
+
+
+
+
+</body>
+</html>

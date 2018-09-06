@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #btn{
+            width: 100px;
+            height:100px;
+            background-color: #f0f;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id='btn'> 你找到我了嘛！？ </div>
+
+    <script>
+    
+        /*
+            定义变量：
+                es5 var function(){}
+                es6 let const /
+        */
+       var oBtn = document.getElementById('btn');
+
+
+        oBtn.onclick = function(){
+            // alert( '你点到我啦！' );
+            oBtn.style.width = '200px';
+            oBtn.style.height = '200px';
+            oBtn.style.fontSize = '40px';
+            oBtn.style.backgroundColor='#ff0';
+        };
+
+    
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        //
+        var date = new Date();//返回时间；
+        var YY = date.getFullYear(); //返回年
+        var MM = date.getMonth() + 1  ;//返回月
+        var Day = date.getDay();//返回星期 【注意 ：每个星期第一天是星期日】
+        var DD = date.getDate();//返回天 
+        var hh = date.getHours(); //返回时
+        var mm = date.getMinutes();//返回分
+        var ss = date.getSeconds();//返回秒
+        var ms = date.getMilliseconds();//返回秒
+        var Time = date.getTime();//返回 1970 年 1 月 1 日至今的毫秒数 
+        var Now = Date.now(); //返回 1970 年 1 月 1 日至今的毫秒数  【不兼容IE】
+        var a = date.toLocaleString() //返回年月日，时分秒；
+        var b = date.toLocaleDateString(); //返回年月日
+        var c = date.toLocaleTimeString(); //返回时分秒
+        
+        console.log( date ); 
+        console.log( YY ) 
+        console.log( MM )
+        console.log( Day )
+        console.log( DD )
+        console.log( hh )
+        console.log( mm )
+        console.log( ss )
+        console.log( ms )
+        console.log( Time )
+        console.log( Now )
+        console.log( a ) 
+        console.log( b )
+        console.log( c );
+
+    </script>
+
+
+</body>
+</html>

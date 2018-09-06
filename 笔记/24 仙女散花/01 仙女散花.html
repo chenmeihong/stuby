@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background-color:#ccc;
+        }
+        #box{
+            position: relative;
+            width:500px;
+            height:500px;
+            border:2px solid #0f0;
+            margin:50px auto 0;
+        }
+        #box > div{
+            position:absolute;
+            left: 0px;
+            top: 0px;
+            width:50px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+    <script src='animation.js' ></script>
+    <script>
+        var box = document.getElementById( 'box' ),
+            arr = [];
+        //用一个数组来进行标记【每一个div】，
+        for( var i = 0;i < 100;i++ ){
+            arr.push( i );
+        }        
+        // console.log( arr )
+        //交换顺序
+        for( var i = 0;i<arr.length;i++ ){
+            var key = Math.floor( Math.random()*100 );//【 0 ，99】
+            var middle = arr[i];
+            arr[i] = arr[key];
+            arr[key] = middle;
+        }
+        // console.log( arr )
+        // console.log( arr[5] )
+
+        /*
+            i  =  1 ;(70) 运动到具体的位置 
+            i  =  2 ;(99) 运动到具体的位置 
+            i  =  3 ;(15) 运动到具体的位置 
+            对位置进行判断，判断是否已经排序完了。
+
+        */
+        /*
+            99    top:50px*index【9】 = 450px  left:  50px*index【9】 = 450px
+            45    top:50px*index【4】 =  200px       left: 50px * index【5】 = 250
+            09    top:50px*index【0】 = 0px top:50px*index【0】 = 0px    left: 50px*index【9】 = 450px
+            90    top:50px*index【9】 = 450px    left: 50px*index【0】 = 0px
+        */
+        i = 0;// i = 99  i = 100 //undefined
+        fn();
+        function fn(){
+            var value = arr[i];
+            //进行判断，如果说值为100的话，arr[100] = undefined;
+            if( typeof value !== 'undefined' ){
+                //确定每一小块的位置，每一个div的宽度与高度都为50px;
+                var top = Math.floor(value / 10)*50,//每个元素的垂直坐标;
+                    left = ( value % 10 ) *50,
+                    str = "<div style = 'background:url(0.png) -"+ left +"px -"+ top +"px '; ></div>";
+                    //console.log( str )
+                    box.innerHTML += str;
+                var div = box.getElementsByTagName( 'div' )[i];
+                //<div style = 'background:url(0.png) 200px 300px ' ></div>
+                animation( div,{
+                    data:{
+                        top:top,
+                        left:left
+                    }
+                },100,function(){
+                    i++;
+                    requestAnimationFrame( fn );
+                } );
+            }
+        }
+    
+
+    </script>
+
+</body>
+</html>

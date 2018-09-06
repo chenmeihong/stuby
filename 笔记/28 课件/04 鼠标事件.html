@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        div{
+            position: absolute;
+            top:300px;
+            width:100px;
+            height:100px;
+            border:2px solid #0f0;
+            background-color:#ff0;
+        }
+    
+    </style>
+</head>
+    <div></div>
+
+<body style='width:2000px;height:2000px;'>
+
+    <script>
+
+        /*
+            clientX/clientY
+                获取鼠标到文档可视区的左边、上边的距离
+            pageX/pageY
+                获取鼠标到文档顶部的左边、上边距离（包括滚动条内容）    
+            pageX/pageY处理兼容的问题
+                document.documentElement.scrollTop + e.clientY
+                    文档的可视区的坐标+被滚轮遮盖的内容坐标;
+
+
+        */
+        //e是形参，指是鼠标事件
+        document.onclick = function (e) {
+            e = e || window.event; //低版本下的兼容处理;
+            // console.log( e )
+            //console.log(e.clientX)
+            // console.log( e.clientX )
+            // console.log(e.pageX)
+            // console.log( e.clientY )
+            // console.log( e.pageY )
+            console.log(document.documentElement.scrollTop + e.clientY)
+            
+        }
+
+        
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        /* 
+            清除定时器：
+                clearInterval( obj )    消除多次
+                clearTimeout( obj )    消除一次性
+
+            清除定时器的时候，可以相互清除；
+
+         */
+        function  fn(){
+            console.log( ' 新手上线，王小伙加油了！ ' )
+        }
+               
+
+        var time1 = setInterval( fn , 1000 ),
+            time2 = setInterval( fn , 3000 );
+        console.log( time1 )  //打击出来对应的序号；
+        console.log( time2 )  //打击出来对应的序号；
+        document.onclick = function(){
+            clearTimeout( time2 );
+
+            // alert( 1 )
+        }
+        // var time = setInterval( fn ,2000 );
+        //     clearInterval( time );
+        //     // alert( 1 )
+        //     time = setInterval( fn ,2000 );
+        // document.onclick = function(){
+        //     clearInterval( time );
+        //     // alert( 1 )
+        // }
+    // fn();
+    
+    
+    </script>
+
+
+
+</body>
+</html>

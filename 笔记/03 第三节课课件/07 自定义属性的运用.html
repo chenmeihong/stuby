@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width: 100px;
+            height:100px;
+            border:2px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+    <script>
+    
+        /* 
+            a++  :  a = a + 1;
+            a--  :  a = a - 1;  
+         */
+        var box = document.getElementById('box');
+        box.num = 0;
+
+        box.onclick = function(){
+            //console.log( box.num );
+            //0,1,2,3,4,5,6,7,8,9
+           //console.log( box.num = box.num + 1 );
+           //box.num++;//0 1 1 1 1 1 1 1 1 1 1 1 1 1 
+           //console.log( box.num );
+            box.num += 5;//box.num = box.num + 5;
+            console.log( box.num );
+        }
+
+    
+    </script>
+
+</body>
+</html>

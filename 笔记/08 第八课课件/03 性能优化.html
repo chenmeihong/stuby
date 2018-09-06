@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        ul li{
+            list-style:none;
+            width:100px;
+            height:30px;
+            border:2px solid #f0f;
+            text-align:center;
+            line-height:30px;
+            margin-bottom:10px;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <ul>
+
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+
+    </ul>
+
+    <script>
+
+        /*
+            1.性能优化：
+                JS优化必须少与HTML打交道。
+            2.每一个获取到标签的长度最好还是用一个变量存起来。    
+        */
+        var li = document.getElementsByTagName( 'li' ),
+            len = li.length;
+        console.time( 'xiaohuo' );
+        for( var i = 0;i<10;i++ ){
+            li[i].style.backgroundColor = 'deeppink'
+        }    
+        console.timeEnd( 'xiaohuo' );
+
+        // console.log( li.length );
+        console.time( 'xiaohuo' );
+        for( var i = 0 ;i< li.length ;i++ ){
+            li[i].style.backgroundColor = 'deeppink'
+        }
+        console.timeEnd( 'xiaohuo' );
+
+        console.time( 'xiaohuo' );
+        for( var i = 0,len = li.length ;i< len ;i++ ){
+            li[i].style.backgroundColor = 'deeppink'
+        }
+        console.timeEnd( 'xiaohuo' );
+
+        console.time( 'xiaohuo' );
+        for( var i = 0;i< len ;i++ ){
+            li[i].style.backgroundColor = 'deeppink'
+        }
+        console.timeEnd( 'xiaohuo' );
+
+
+        /*
+            1 2 4 3 2 4 3 2 4 3
+        */
+
+    </script>
+
+</body>
+</html>
